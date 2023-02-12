@@ -8,11 +8,13 @@
   },
   "type": "module",
   "dependencies": {
-    "fastify" : "^4.12.0",
-    "@fastify/env": "^4.2.0",
+    "@fastify/error": "^3.2.0",
     "@fastify/mongodb": "^6.2.0",
     "@fastify/swagger": "^8.3.1",
-    "@fastify/error": "^3.2.0",
+    "@fastify/swagger-ui": "^1.3.0",
+    "cluster": "^0.7.7",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.12.0",
     "fastify-plugin": "^4.5.0",
     "jsonwebtoken": "9.0.0"
   },

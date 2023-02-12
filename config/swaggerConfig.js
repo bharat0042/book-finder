@@ -1,13 +1,33 @@
-export const swaggerConfig = {
-    swagger: {
+'use strict';
+
+const swaggerConfig = {
+    mode: 'dynamic',
+    openapi: {
         info: {
-            title: 'Test swagger',
-            description: 'testing the fastify swagger api',
-            version: '0.1.0'
+            title: "Book APIs",
+            description: "Book APIs",
+            version: "1.0.0",
         },
-        host: 'localhost',
-        schemes: ['http'],
-        consumes: ['application/json'],
-        produces: ['application/json']
+        externalDocs: {
+            url: 'https://swagger.io',
+            description: 'Find more info here'
+        }
     }
 };
+
+const swaggerUIConfig = {
+    routePrefix: '/docs',
+    initOAuth: {},
+    uiConfig: {
+        docExpansion: 'full',
+        deepLinking: false
+    },
+    uiHooks: {
+        onRequest: function (request, reply, next) { next() },
+        preHandler: function (request, reply, next) { next() }
+    },
+    staticCSP: true,
+    transformStaticCSP: (header) => header
+};
+
+export { swaggerConfig, swaggerUIConfig }; 
