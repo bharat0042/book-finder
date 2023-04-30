@@ -13,4 +13,15 @@ async function saveBook(request, response, collection) {
     return {status: 200};
 }
 
-export {getBookById, saveBook} ;
+async function getBooks(request, response, collection) {
+    const pageNo = request.query.page;
+    const size = request.query.size;
+
+    const numObjectsToSkip = (pageNo - 1) * size;
+    console.log("\n");
+    console.log(JSON.stringify(await collection.find().skip(Number(numObjectsToSkip)).limit(Number(size)).toArray()));
+    console.log("\n");
+    return collection.find().skip(Number(numObjectsToSkip)).limit(Number(size)).toArray();
+}
+
+export {getBookById, getBooks, saveBook} ;

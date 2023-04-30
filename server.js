@@ -33,5 +33,3 @@ async function start() {
         fastify.log.error(err);
     }
 }
-
-// await start();

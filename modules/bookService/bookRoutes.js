@@ -1,17 +1,25 @@
 'use strict';
 
-import {getBooksSchema, booksPostBodySchema} from './schema.js'
-import {getBookById, saveBook} from './bookDAO.js';
-async function bookRoutes(fastifyInstance) {
+import {getBooksByIdSchema, booksPostBodySchema, getBooksSchema} from './schema.js'
+import {getBookById, getBooks, saveBook} from './bookDAO.js';
+async function bookRoutes(fastifyInstance, opts) {
     const booksCol = fastifyInstance.mongo.db.collection('booksCol');
 
     const routes = [
         {
             method: 'GET',
             url: '/books/:id',
-            schema: getBooksSchema,
+            schema: getBooksByIdSchema,
             handler: async (request, response) => {
                 return await getBookById(request, response, booksCol);
+            }
+        },
+        {
+            method: 'GET',
+            url: '/books',
+            schema: getBooksSchema,
+            handler: async (request, response) => {
+                return await getBooks(request, response, booksCol);
             }
         },
         {

@@ -3,7 +3,7 @@
 import Fastify from 'fastify';
 
 import fastifyMongodb from '@fastify/mongodb';
-// import fastifyPlugin from 'fastify-plugin';
+import fastifyPlugin from 'fastify-plugin';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUI from '@fastify/swagger-ui';
 
@@ -18,7 +18,7 @@ async function app() {
         .register(fastifySwagger, swaggerConfig)
         .register(fastifySwaggerUI, swaggerUIConfig)
         .register(fastifyMongodb, {forceClose: true, url: process.env.MONGO_URI})
-        .register(bookRoutes);
+        .register(fastifyPlugin(bookRoutes, {}));
 
     return fastify;
 }
