@@ -9,6 +9,12 @@ let booksSchema = {
         "country": {
             "type": "string"
         },
+        "genre": {
+            "type": "array"
+        },
+        "isbn": {
+            "type": "string"
+        },
         "language": {
             "type": "string"
         },
@@ -28,6 +34,8 @@ let booksSchema = {
     "required": [
         "author",
         "country",
+        "genre",
+        "isbn",
         "language",
         "link",
         "pages",
@@ -46,45 +54,7 @@ const getBooksSchema = {
     response: {
         200: {
             "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "_id": {
-                        "type": "string"
-                    },
-                    "author": {
-                        "type": "string"
-                    },
-                    "country": {
-                        "type": "string"
-                    },
-                    "language": {
-                        "type": "string"
-                    },
-                    "link": {
-                        "type": "string"
-                    },
-                    "pages": {
-                        "type": "number"
-                    },
-                    "title": {
-                        "type": "string"
-                    },
-                    "year": {
-                        "type": "number"
-                    }
-                },
-                "required": [
-                    "_id",
-                    "author",
-                    "country",
-                    "language",
-                    "link",
-                    "pages",
-                    "title",
-                    "year"
-                ]
-            }
+            "items": booksSchema
         }
     }
 }
